@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-<<<<<<< HEAD:main.c
 #define MAX_INPUT_SIZE 100
 #define MAX_ARG_COUNT 20
 
@@ -15,41 +14,19 @@ int main() {
         // Kullanıcıdan komut al
         printf("> ");
         fflush(stdout);
-=======
-#define MAX_INPUT_SIZE 256 
-// Maximum girdi sayısı tanımlanır
-
-int main() {
-    char input[MAX_INPUT_SIZE]; // Maximum girdi sayısı için liste oluşturulur
-
-    while (1) {
-        // Prompt gösterilir
-        printf("> ");
-        fflush(stdout);  // Prompt'un hemen ekranda görünmesi sağlanır
-
-        // Kullanıcıdan girdi alınır
->>>>>>> 3989a00b63e94a1996943089bd48754acef38553:src/main.c
         if (fgets(input, MAX_INPUT_SIZE, stdin) == NULL) {
             continue;
         }
 
-<<<<<<< HEAD:main.c
-        // '\n' karakterini temizle
-        input[strcspn(input, "\n")] = '\0';
-
-        // "exit" komutunu kontrol et
-=======
         // Girdinin sonundaki '\n' karakteri temizlenir
         input[strcspn(input, "\n")] = '\0';
 
         // Çıkış komutu kontrol edilir
->>>>>>> 3989a00b63e94a1996943089bd48754acef38553:src/main.c
         if (strcmp(input, "exit") == 0) {
             printf("Programdan çıkılıyor...\n");
             break;
         }
 
-<<<<<<< HEAD:main.c
         // Argümanları temizle
         memset(args, 0, sizeof(args));
         arg_count = 0;
@@ -81,10 +58,6 @@ int main() {
         } else {
             printf("Bilinmeyen komut: %s\n", args[0]);
         }
-=======
-        // Komutu işlenir
-        printf("Girdiğiniz komut: %s\n", input);
->>>>>>> 3989a00b63e94a1996943089bd48754acef38553:src/main.c
     }
 
     return 0;
