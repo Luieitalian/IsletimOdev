@@ -1,1 +1,0 @@
-# İşletim Sistemleri Ödevi
