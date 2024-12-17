@@ -8,4 +8,3 @@ main:main.c
 
 clean:
 	rm -f mycli
-
