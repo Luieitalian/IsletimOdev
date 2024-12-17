@@ -1,59 +1,61 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../include/echo.h"
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
-#define MAX_INPUT_SIZE 100
-#define MAX_ARG_COUNT 20
+#define MAX_CMD_LEN 1024
+#define MAX_ARGS 100
+
+// Girişi komut ve argümanlara bölme
+void input_dividing(char *input, char **args) {
+    char *token;
+    int i = 0;
+
+    token = strtok(input, " \n");
+    while (token != NULL) {
+        args[i++] = token;
+        token = strtok(NULL, " \n");
+    }
+    args[i] = NULL; // Null-terminate the argument list
+}
 
 int main() {
-    char input[MAX_INPUT_SIZE];
-    char *args[MAX_ARG_COUNT];  // Argümanların tutacağı dizi
-    int arg_count;
+    char input[MAX_CMD_LEN];
+    char *args[MAX_ARGS];
+    pid_t pid;
+    int status;
 
     while (1) {
-        // Kullanıcıdan komut al
+        // Display prompt
         printf("> ");
         fflush(stdout);
-        if (fgets(input, MAX_INPUT_SIZE, stdin) == NULL) {
+
+        if (fgets(input, sizeof(input), stdin) == NULL) {
+            perror("Girilen okunamadı!");
             continue;
         }
 
-        // Girdinin sonundaki '\n' karakteri temizlenir
-        input[strcspn(input, "\n")] = '\0';
+        // girişi komut ve argümanlara böl
+        input_dividing(input, args);
 
-        // Çıkış komutu kontrol edilir
-        if (strcmp(input, "exit") == 0) {
-            printf("Programdan çıkılıyor...\n");
-            break;
+        // komut için fork
+        pid = fork();
+        if (pid < 0) {
+            perror("Fork başarısız");
+            continue;
         }
 
-        // Argümanları temizle
-        memset(args, 0, sizeof(args));
-        arg_count = 0;
-
-         // Komut ve argümanları ayrıştır
-        char *token = strtok(input, " ");
-        while (token != NULL && arg_count < MAX_ARG_COUNT) {
-            args[arg_count++] = token;  // Argümanları diziye kaydet
-            token = strtok(NULL, " ");
-        }
-
-         // Argümanları listele
-        if (arg_count > 0) {
-            printf("Komut: %s\n", args[0]);
-            for (int i = 1; i < arg_count; i++) {
-                printf("Argüman %d: %s\n", i, args[i]);
+        if (pid == 0) {
+            // Çocuk proseste çalıştır
+            if (execvp(args[0], args + 1) == -1) {  // ilk args[0] komut iken diğerleri args + 1 argümanlar
+                perror("Komutu çalıştırma başarısız");
+                exit(1);
             }
-        }
-
-         // Komutlara göre işlem yap
-        if (strcmp(args[0], "help") == 0) {
-            printf("Kullanılabilir komutlar: help, exit, echo\n");
-        } else if (strcmp(args[0], "echo") == 0) {
-            echo();
         } else {
-            printf("Bilinmeyen komut: %s\n", args[0]);
+            // Çocuk prosesin bitimini bekle
+            waitpid(pid, &status, 0);
         }
     }
 
