@@ -2,35 +2,34 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_INPUT_SIZE 256
+#define MAX_INPUT_SIZE 256 
+// Maximum girdi sayısı tanımlanır
 
 int main() {
-    char input[MAX_INPUT_SIZE];
+    char input[MAX_INPUT_SIZE]; // Maximum girdi sayısı için liste oluşturulur
 
     while (1) {
-        // Prompt göster
+        // Prompt gösterilir
         printf("> ");
-        fflush(stdout);  // Prompt'un hemen ekranda görünmesini sağlar
+        fflush(stdout);  // Prompt'un hemen ekranda görünmesini sağlanır
 
-        // Kullanıcıdan girdi al
+        // Kullanıcıdan girdi alınır
         if (fgets(input, MAX_INPUT_SIZE, stdin) == NULL) {
             printf("\nÇıkılıyor...\n");
             break;
         }
 
-        // Girdinin sonundaki '\n' karakterini temizle
+        // Girdinin sonundaki '\n' karakterini temizlenir
         input[strcspn(input, "\n")] = '\0';
 
-        // Çıkış komutunu kontrol et
+        // Çıkış komutunu kontrol edilir
         if (strcmp(input, "exit") == 0) {
             printf("Programdan çıkılıyor...\n");
             break;
         }
 
-        // Komutu işleme
+        // Komutu işlenir
         printf("Girdiğiniz komut: %s\n", input);
-
-        // Burada komuta göre işlem yapabilirsin
     }
 
     return 0;
