@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../include/echo.h"
 
 #define MAX_INPUT_SIZE 100
 #define MAX_ARG_COUNT 20
 
 int main() {
     char input[MAX_INPUT_SIZE];
-    char *args[MAX_ARG_COUNT];  // Argümanları tutacak dizi
+    char *args[MAX_ARG_COUNT];  // Argümanların tutacağı dizi
     int arg_count;
 
     while (1) {
@@ -50,11 +51,7 @@ int main() {
         if (strcmp(args[0], "help") == 0) {
             printf("Kullanılabilir komutlar: help, exit, echo\n");
         } else if (strcmp(args[0], "echo") == 0) {
-            printf("Echo: ");
-            for (int i = 1; i < arg_count; i++) {
-                printf("%s ", args[i]);
-            }
-            printf("\n");
+            echo();
         } else {
             printf("Bilinmeyen komut: %s\n", args[0]);
         }

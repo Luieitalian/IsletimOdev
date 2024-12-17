@@ -1,10 +1,19 @@
 CC=gcc
-CFLAGS=-Wall -g
+COMPILEFLAGS=-Wall -c
+SRC=src
+LIB=lib
+BIN=bin
 
-all:main
+all:link
 
-main:main.c
-	$(CC) $(CFLAGS) -o main main.c
+link:main echo
+	$(CC) $(LIB)/echo.o $(LIB)/main.o -o $(BIN)/main
+	
+main:
+	$(CC) $(COMPILEFLAGS) $(SRC)/main.c -o $(LIB)/main.o
+
+echo:
+	$(CC) $(COMPILEFLAGS) $(SRC)/echo.c -o $(LIB)/echo.o
 
 clean:
 	rm -f mycli
