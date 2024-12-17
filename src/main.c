@@ -7,7 +7,7 @@
 
 int main() {
     char input[MAX_INPUT_SIZE];
-    char *args[MAX_ARG_COUNT];  // Argümanları tutacak dizi
+    char *args[MAX_ARG_COUNT];  // Argümanların tutacağı dizi
     int arg_count;
 
     while (1) {
