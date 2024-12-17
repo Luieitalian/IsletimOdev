@@ -11,7 +11,7 @@ int main() {
     while (1) {
         // Prompt gösterilir
         printf("> ");
-        fflush(stdout);  // Prompt'un hemen ekranda görünmesini sağlanır
+        fflush(stdout);  // Prompt'un hemen ekranda görünmesi sağlanır
 
         // Kullanıcıdan girdi alınır
         if (fgets(input, MAX_INPUT_SIZE, stdin) == NULL) {
@@ -19,10 +19,10 @@ int main() {
             break;
         }
 
-        // Girdinin sonundaki '\n' karakterini temizlenir
+        // Girdinin sonundaki '\n' karakteri temizlenir
         input[strcspn(input, "\n")] = '\0';
 
-        // Çıkış komutunu kontrol edilir
+        // Çıkış komutu kontrol edilir
         if (strcmp(input, "exit") == 0) {
             printf("Programdan çıkılıyor...\n");
             break;
