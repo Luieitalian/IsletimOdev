@@ -1,19 +1,22 @@
 CC=gcc
-COMPILEFLAGS=-Wall -c
+CFLAGS=-Wall
+COMPILEFLAGS=-Wall -c -I./include
 SRC=src
+INCLUDE=include
 LIB=lib
 BIN=bin
 
-all:link
+SOURCES=$(SRC)/main.c $(SRC)/redirection.c $(SRC)/pipeline.c $(SRC)/command.c
+OBJECTS=$(SOURCES:$(SRC)/%.c=$(LIB)/%.o)
 
-link:main echo
-	$(CC) $(LIB)/echo.o $(LIB)/main.o -o $(BIN)/main
-	
-main:
-	$(CC) $(COMPILEFLAGS) $(SRC)/main.c -o $(LIB)/main.o
+all: link
 
-echo:
-	$(CC) $(COMPILEFLAGS) $(SRC)/echo.c -o $(LIB)/echo.o
+link: $(OBJECTS)
+	$(CC) $(OBJECTS) -o $(BIN)/shell
+
+$(LIB)/%.o: $(SRC)/%.c
+	$(CC) $(COMPILEFLAGS) $< -o $@
 
 clean:
-	rm -f mycli
+	rm -rf $(BIN)
+	rm -rf $(LIB)
