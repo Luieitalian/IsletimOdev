@@ -1,3 +1,11 @@
+/**
+ * BERKE PİTE
+ * ENES SOYLU
+ * AHMET PEKDEMİR
+ * ÜZEYİR EMRE TÜRKMEN
+ * HASAN YASİR ARSLAN
+ */
+
 #ifndef BORULAMA_H
 #define BORULAMA_H
 #include "kabuk.h"

@@ -1,3 +1,11 @@
+/**
+ * BERKE PİTE
+ * ENES SOYLU
+ * AHMET PEKDEMİR
+ * ÜZEYİR EMRE TÜRKMEN
+ * HASAN YASİR ARSLAN
+ */
+
 #include "borulama.h" // Borulama ile ilgili tanımlamaları içeren başlık dosyası
 #include "yonlendirme.h" // Yönlendirme işlemleri için kullanılan başlık dosyası
 

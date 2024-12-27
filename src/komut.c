@@ -1,3 +1,11 @@
+/**
+ * BERKE PİTE
+ * ENES SOYLU
+ * AHMET PEKDEMİR
+ * ÜZEYİR EMRE TÜRKMEN
+ * HASAN YASİR ARSLAN
+ */
+
 #include "komut.h" // Komutla ilgili tanımlamaları içeren başlık dosyası
 
 // Kullanıcıdan alınan komut dizisini çalıştıran fonksiyon

@@ -1,5 +1,14 @@
+/**
+ * BERKE PİTE
+ * ENES SOYLU
+ * AHMET PEKDEMİR
+ * ÜZEYİR EMRE TÜRKMEN
+ * HASAN YASİR ARSLAN
+ */
+
 #include "borulama.h"
 #include "kabuk.h"
+#include "komut.h"
 
 int main() {
     // SIGCHLD handler'ını ayarla

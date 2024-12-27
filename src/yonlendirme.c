@@ -1,3 +1,11 @@
+/**
+ * BERKE PİTE
+ * ENES SOYLU
+ * AHMET PEKDEMİR
+ * ÜZEYİR EMRE TÜRKMEN
+ * HASAN YASİR ARSLAN
+ */
+
 #include "yonlendirme.h"  // Yönlendirme işlemleri için gerekli tanımlamaları içeren başlık dosyası
 
 // Yönlendirme işlemlerini gerçekleştiren fonksiyon

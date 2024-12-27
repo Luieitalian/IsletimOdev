@@ -1,3 +1,11 @@
+ #
+ # BERKE PİTE
+ # ENES SOYLU
+ # AHMET PEKDEMİR
+ # ÜZEYİR EMRE TÜRKMEN
+ # HASAN YASİR ARSLAN
+ #
+
 all: setup link
 
 setup:
