@@ -1,22 +1,24 @@
-CC=gcc
-CFLAGS=-Wall
-COMPILEFLAGS=-Wall -c -I./include
-SRC=src
-INCLUDE=include
-LIB=lib
-BIN=bin
+all: setup link
 
-SOURCES=$(SRC)/main.c $(SRC)/redirection.c $(SRC)/pipeline.c $(SRC)/command.c
-OBJECTS=$(SOURCES:$(SRC)/%.c=$(LIB)/%.o)
+setup:
+	mkdir -p bin
+	mkdir -p lib
 
-all: link
+link: lib/main.o lib/redirection.o lib/pipeline.o lib/command.o
+	gcc lib/main.o lib/redirection.o lib/pipeline.o lib/command.o -o bin/shell
 
-link: $(OBJECTS)
-	$(CC) $(OBJECTS) -o $(BIN)/shell
+lib/main.o: src/main.c
+	gcc -Wall -c -I./include src/main.c -o lib/main.o
 
-$(LIB)/%.o: $(SRC)/%.c
-	$(CC) $(COMPILEFLAGS) $< -o $@
+lib/redirection.o: src/redirection.c
+	gcc -Wall -c -I./include src/redirection.c -o lib/redirection.o
+
+lib/pipeline.o: src/pipeline.c
+	gcc -Wall -c -I./include src/pipeline.c -o lib/pipeline.o
+
+lib/command.o: src/command.c
+	gcc -Wall -c -I./include src/command.c -o lib/command.o
 
 clean:
-	rm -rf $(BIN)
-	rm -rf $(LIB)
+	rm -rf bin
+	rm -rf lib
