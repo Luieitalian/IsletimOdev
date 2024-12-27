@@ -1,4 +1,5 @@
-#include "shell.h"
+#include "borulama.h"
+#include "kabuk.h"
 
 int main() {
     // SIGCHLD handler'ını ayarla
@@ -14,7 +15,7 @@ int main() {
         // Kullanıcıdan komut al
         printf("> ");
         fflush(stdout);
-        
+
         if (fgets(input, MAX_INPUT_SIZE, stdin) == NULL) {
             continue;
         }
